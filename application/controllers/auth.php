@@ -46,8 +46,11 @@ class Auth extends CI_Controller {
 			{
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
-
+			$this->load->view('template/header');
+			$this->load->view('template/layout1_open');
 			$this->_render_page('auth/index', $this->data);
+			$this->load->view('template/layout1_close');
+			$this->load->view('template/footer');
 		}
 	}
 
@@ -96,8 +99,9 @@ class Auth extends CI_Controller {
 				'id' => 'password',
 				'type' => 'password',
 			);
-
+			$this->load->view('template/header');
 			$this->_render_page('auth/login', $this->data);
+			$this->load->view('template/footer');
 		}
 	}
 
@@ -160,7 +164,11 @@ class Auth extends CI_Controller {
 			);
 
 			//render
+			$this->load->view('template/header');
+			$this->load->view('template/layout1_open');
 			$this->_render_page('auth/change_password', $this->data);
+			$this->load->view('template/layout1_close');
+			$this->load->view('template/footer');
 		}
 		else
 		{
@@ -203,7 +211,9 @@ class Auth extends CI_Controller {
 
 			//set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+			$this->load->view('template/header');
 			$this->_render_page('auth/forgot_password', $this->data);
+			$this->load->view('template/footer');
 		}
 		else
 		{
@@ -275,7 +285,9 @@ class Auth extends CI_Controller {
 				$this->data['code'] = $code;
 
 				//render
+				$this->load->view('template/header');
 				$this->_render_page('auth/reset_password', $this->data);
+				$this->load->view('template/footer');
 			}
 			else
 			{
@@ -486,8 +498,11 @@ class Auth extends CI_Controller {
 				'type'  => 'password',
 				'value' => $this->form_validation->set_value('password_confirm'),
 			);
-
+			$this->load->view('template/header');
+			$this->load->view('template/layout1_open');
 			$this->_render_page('auth/create_user', $this->data);
+			$this->load->view('template/layout1_close');
+			$this->load->view('template/footer');
 		}
 	}
 
@@ -625,8 +640,12 @@ class Auth extends CI_Controller {
 			'id'   => 'password_confirm',
 			'type' => 'password'
 		);
-
+		
+		$this->load->view('template/header');
+		$this->load->view('template/layout1_open');
 		$this->_render_page('auth/edit_user', $this->data);
+		$this->load->view('template/layout1_close');
+		$this->load->view('template/footer');
 	}
 
 	// create a new group
@@ -672,8 +691,12 @@ class Auth extends CI_Controller {
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('description'),
 			);
-
+			
+			$this->load->view('template/header');
+			$this->load->view('template/layout1_open');
 			$this->_render_page('auth/create_group', $this->data);
+			$this->load->view('template/layout1_close');
+			$this->load->view('template/footer');
 		}
 	}
 
@@ -735,8 +758,12 @@ class Auth extends CI_Controller {
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('group_description', $group->description),
 		);
-
+	
+		$this->load->view('template/header');
+		$this->load->view('template/layout1_open');
 		$this->_render_page('auth/edit_group', $this->data);
+		$this->load->view('template/layout1_close');
+		$this->load->view('template/footer');
 	}
 
 
