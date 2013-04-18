@@ -429,6 +429,14 @@ class Auth extends CI_Controller {
 				'last_name'  => $this->input->post('last_name'),
 				'company'    => $this->input->post('company'),
 				'phone'      => $this->input->post('phone1') . '-' . $this->input->post('phone2') . '-' . $this->input->post('phone3'),
+				'photo'		=> '',
+				'country'	=> $this->input->post('country'),
+				'city'		=> $this->input->post('city'),
+				'county'	=> $this->input->post('county'),
+				'address1' 	=> $this->input->post('address1'),
+				'address2'	=> $this->input->post('address2'),
+				'rate'		=> $this->input->post('rate'),
+				'about'		=> $this->input->post('about'),
 			);
 		}
 		if ($this->form_validation->run() == true && $this->ion_auth->register($username, $password, $email, $additional_data))
@@ -498,6 +506,48 @@ class Auth extends CI_Controller {
 				'type'  => 'password',
 				'value' => $this->form_validation->set_value('password_confirm'),
 			);
+			$this->data['photo'] = array(
+					'name'  => 'photo',
+					'id'    => 'photo',
+					'type'  => 'text',
+					'value' => $this->form_validation->set_value('photo'),
+			);
+			$this->data['country'] = array(
+					'name'  => 'country',
+					'id'    => 'country',
+					'type'  => 'text',
+					'value' => $this->form_validation->set_value('country'),
+			);
+			$this->data['county'] = array(
+					'name'  => 'county',
+					'id'    => 'county',
+					'type'  => 'text',
+					'value' => $this->form_validation->set_value('county'),
+			);
+			$this->data['address1'] = array(
+					'name'  => 'address1',
+					'id'    => 'address1',
+					'type'  => 'text',
+					'value' => $this->form_validation->set_value('address1'),
+			);
+			$this->data['address2'] = array(
+					'name'  => 'address2',
+					'id'    => 'address2',
+					'type'  => 'text',
+					'value' => $this->form_validation->set_value('address2'),
+			);
+			$this->data['rate'] = array(
+					'name'  => 'rate',
+					'id'    => 'rate',
+					'type'  => 'text',
+					'value' => $this->form_validation->set_value('rate'),
+			);
+			$this->data['about'] = array(
+					'name'  => 'about',
+					'id'    => 'about',
+					'type'  => 'text',
+					'value' => $this->form_validation->set_value('about'),
+			);
 			$this->load->view('template/header');
 			$this->load->view('template/layout1_open');
 			$this->_render_page('auth/create_user', $this->data);
@@ -548,6 +598,15 @@ class Auth extends CI_Controller {
 				'last_name'  => $this->input->post('last_name'),
 				'company'    => $this->input->post('company'),
 				'phone'      => $this->input->post('phone1') . '-' . $this->input->post('phone2') . '-' . $this->input->post('phone3'),
+				'mobile'	=> $this->input->post('mobile'),
+				'photo'		=> '',
+				'country'	=> $this->input->post('country'),
+				'city'		=> $this->input->post('city'),
+				'county'	=> $this->input->post('county'),
+				'address1' 	=> $this->input->post('address1'),
+				'address2'	=> $this->input->post('address2'),
+				'rate'		=> $this->input->post('rate'),
+				'about'		=> $this->input->post('about'),
 			);
 
 			//Update the groups user belongs to
@@ -640,7 +699,54 @@ class Auth extends CI_Controller {
 			'id'   => 'password_confirm',
 			'type' => 'password'
 		);
-		
+		$this->data['mobile'] = array(
+				'name'  => 'mobile',
+				'id'    => 'mobile',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('mobile', $user->mobile),
+		);
+		$this->data['photo'] = array(
+				'name'  => 'photo',
+				'id'    => 'photo',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('photo', $user->photo),
+		);
+		$this->data['country'] = array(
+				'name'  => 'country',
+				'id'    => 'country',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('country', $user->country),
+		);
+		$this->data['county'] = array(
+				'name'  => 'county',
+				'id'    => 'county',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('county', $user->county),
+		);
+		$this->data['address1'] = array(
+				'name'  => 'address1',
+				'id'    => 'address1',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('address1', $user->address1),
+		);
+		$this->data['address2'] = array(
+				'name'  => 'address2',
+				'id'    => 'address2',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('address2', $user->address2),
+		);
+		$this->data['rate'] = array(
+				'name'  => 'rate',
+				'id'    => 'rate',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('rate', $user->rate),
+		);
+		$this->data['about'] = array(
+				'name'  => 'about',
+				'id'    => 'about',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('about', $user->about),
+		);
 		$this->load->view('template/header');
 		$this->load->view('template/layout1_open');
 		$this->_render_page('auth/edit_user', $this->data);
