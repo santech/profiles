@@ -3,7 +3,8 @@
 
 <div id="infoMessage"><?php echo $message;?></div>
 
-<table cellpadding=0 cellspacing=10>
+<table class="table table-striped table-bordered">
+	<thead>
 	<tr>
 		<th><?php echo lang('index_fname_th');?></th>
 		<th><?php echo lang('index_lname_th');?></th>
@@ -12,6 +13,8 @@
 		<th><?php echo lang('index_status_th');?></th>
 		<th><?php echo lang('index_action_th');?></th>
 	</tr>
+	</thead>
+	<tbody>
 	<?php foreach ($users as $user):?>
 		<tr>
 			<td><?php echo $user->first_name;?></td>
@@ -26,6 +29,7 @@
 			<td><?php echo anchor("auth/edit_user/".$user->id, 'Edit') ;?></td>
 		</tr>
 	<?php endforeach;?>
+	</tbody>
 </table>
 
-<p><?php echo anchor('auth/create_user', lang('index_create_user_link'))?> | <?php echo anchor('auth/create_group', lang('index_create_group_link'))?></p>
+<p><?php echo anchor('auth/create_user', lang('index_create_user_link'),array('class'=>'btn btn-info'))?> | <?php echo anchor('auth/create_group', lang('index_create_group_link'),array('class'=>'btn btn-info'))?></p>

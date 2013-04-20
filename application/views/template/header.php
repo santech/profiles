@@ -67,6 +67,9 @@
               <li class=""><a href="#"></a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
+               <?php if (!$this->ion_auth->logged_in()): ?>
+               <li><a href="<?php echo site_url('register'); ?>">Register</a></li>
+               <?php endif; ?>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
