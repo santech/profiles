@@ -34,9 +34,16 @@ class Register extends CI_Controller {
 		if ($this->form_validation->run() == true && $this->ion_auth->register($username, $password, $email, $additional_data))
 		{
 			//check to see if we are creating the user
-			//redirect them back to the admin page
+			//redirect them 
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("auth", 'refresh');
+			if($this->ion_auth->login($email,$password))
+			{
+				redirect("/", 'refresh');
+			}
+			else
+			{
+				redirect("auth/login", 'refresh');
+			}
 		}
 		else
 		{

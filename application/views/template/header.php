@@ -58,7 +58,8 @@
             <p class="navbar-text pull-right">
             <?php if ($this->ion_auth->logged_in()): 
             $user = $this->ion_auth->user()->row(); ?>
-              Logged in as <a href="<?php echo site_url('auth/edit_user'); ?>" class="navbar-link"><?php echo $user->email; ?></a>
+              Logged in as <a href="<?php echo site_url('auth/edit_user'); ?>" class="navbar-link"><?php echo $user->email; ?></a> | 
+              <a href="<?php echo site_url('auth/logout'); ?>" class="btn btn-small" >Logout</a>
             <?php else: ?>
               <a href="<?php echo site_url('auth/login'); ?>" class="navbar-link">Please Login</a>
             <?php endif; ?>
